@@ -1,14 +1,10 @@
-
 function run(msg, matches)
-  return 'Telegram Bot '.. VERSION .. [[ 
-  Checkout http://git.io/6jdjGg
-  GNU v2 license.]]
+  return 'Tocamelasetabot v 0.1 prealpha based on yagop/telegram-bot https://github.com/yagop/telegram-bot '
 end
 
 return {
-    description = "Shows bot version", 
+    description = "Version",
     usage = "!version",
-    patterns = {"^!version$"}, 
-    run = run 
+    patterns = {"^!version$"},
+    run = run
 }
-
