@@ -44,18 +44,39 @@ function getMemeGen(text)
     elseif string.find(parameter[0], 'god') then
              generatorID="1591"
              imageID="112464"
-
+------------------
+---Extra memes---
+ elseif string.find(parameter[0], 'nsi') then
+             generatorID="305"
+             imageID="84688"
+ elseif string.find(parameter[0], 'daw') then
+             generatorID="79"
+             imageID="108785"
+ elseif string.find(parameter[0], 'fck') then
+             generatorID="1189472"
+             imageID="5044147"
+ elseif string.find(parameter[0], 'piss') then
+             generatorID="92"
+             imageID="89714"
+---------------
     else
            generatorID="45"
            imageID="20"
     end
 
     text1= parameter[1]
-    text2= parameter[2]
+---Check parameter 2
+if parameter[2] == nil then
+   text2="."
+else
+        text2=parameter[2]
+end
+---
+text2=urlencode(text2)
+api = "http://version1.api.memegenerator.net/Instance_Create?username=pollosp&password=kk12kk13&languageCode=es&generatorID=" .. urlencode(generatorID) .."&imageID=" .. urlencode(imageID) .. "&text0=" .. urlencode(text1) .. "&text1=" .. text2
 
-    api = "http://version1.api.memegenerator.net/Instance_Create?username=pollosp&password=kk12kk13&languageCode=es&generatorID=" .. urlencode(generatorID) .."&imageID=" .. urlencode(imageID) .. "&text0=" .. urlencode(text1) .. "&text1" .. urlencode(text1)
-  print(api..urlencode(text))
-    b = http.request(api..urlencode(text))
+  print(api)
+    b = http.request(api)
     local gifres = json:decode(b)
 
     if (gifres.success == true) then -- OK
@@ -96,4 +117,4 @@ return {
     patterns = {"^!meme (.*)$"},
     run = run
 }
-               
+
