@@ -109,5 +109,5 @@ return {
 		"^!plugins? (reload)$"
 		}, 
 	run = run,
-	privileged = true
+	privileged = false 
 }
