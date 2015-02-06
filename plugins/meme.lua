@@ -67,7 +67,7 @@ function getMemeGen(text)
     text1= parameter[1]
 ---Check parameter 2
 if parameter[2] == nil then
-   text2="."
+   text2=" "
 else
         text2=parameter[2]
 end

@@ -4,7 +4,7 @@ local text = matches[1]
 file = assert(io.open("/home/azureuser/projects/a.txt", "a+"))
 file:write(text,"\n")
 file:close()
-return 'Agregada papoiada:  ' .. text
+return 'Agregada frase mítica:  ' .. text
 
 end
 
