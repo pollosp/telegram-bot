@@ -1,14 +1,30 @@
-  
+function urlencode_google(str)
+   if (str) then
+      str = string.gsub (str, "\n", "\r\n")
+      str = string.gsub (str, "([^%w ])",
+         function (c) return string.format ("%%%02X", string.byte(c)) end)
+      str = string.gsub (str, " ", "+")
+   end
+   return str
+end   
+
+
+ 
 function getGoogleImage(text)
   text = URL.escape(text)
+  text = urlencode_google(text)
   for i = 1, 5, 1 do -- Try 5 times
-    local api = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&q="
+    local api = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&hl=es&q="
     b = http.request(api..text)
     local google = json:decode(b)
 
     if (google.responseStatus == 200) then -- OK
       math.randomseed(os.time())
-      i = math.random(#google.responseData.results) -- Random image from results
+      i = math.random(7) --Solo los 10 primeros-- Random image from results
+     if i  == nil then
+        i=0
+     end
+ 
       return google.responseData.results[i].url
     end
   end

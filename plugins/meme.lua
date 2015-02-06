@@ -29,23 +29,24 @@ function getMemeGen(text)
     elseif string.find(parameter[0], 'rly') then
              generatorID="920"
              imageID="117049"
-
+    
     elseif string.find(parameter[0], 'succ') then
              generatorID="121"
              imageID="1031"
-
+    
     elseif string.find(parameter[0], 'all') then
              generatorID="6013"
              imageID="1121885"
-
+    
     elseif string.find(parameter[0], 'dam') then
              generatorID="998"
              imageID="203665"
+
     elseif string.find(parameter[0], 'god') then
              generatorID="1591"
              imageID="112464"
 ------------------
----Extra memes---
+---Extra
  elseif string.find(parameter[0], 'nsi') then
              generatorID="305"
              imageID="84688"
@@ -65,16 +66,16 @@ function getMemeGen(text)
     end
 
     text1= parameter[1]
----Check parameter 2
+--    text2= parameter[2]
 if parameter[2] == nil then
    text2=" "
 else
-        text2=parameter[2]
+	text2=parameter[2]
 end
 ---
+print (text2)
 text2=urlencode(text2)
-api = "http://version1.api.memegenerator.net/Instance_Create?username=pollosp&password=kk12kk13&languageCode=es&generatorID=" .. urlencode(generatorID) .."&imageID=" .. urlencode(imageID) .. "&text0=" .. urlencode(text1) .. "&text1=" .. text2
-
+    api = "http://version1.api.memegenerator.net/Instance_Create?username=pollosp&password=kk12kk13&languageCode=es&generatorID=" .. urlencode(generatorID) .."&imageID=" .. urlencode(imageID) .. "&text0=" .. urlencode(text1) .. "&text1=" .. text2
   print(api)
     b = http.request(api)
     local gifres = json:decode(b)
@@ -98,7 +99,8 @@ api = "http://version1.api.memegenerator.net/Instance_Create?username=pollosp&pa
     else
       return nil
     end
-  end
+  end 
+
 end
 
 function run(msg, matches)
@@ -117,4 +119,3 @@ return {
     patterns = {"^!meme (.*)$"},
     run = run
 }
-

@@ -1,10 +1,9 @@
-
 function run(msg, matches)
-   return 'No soy arroyo joder, pero que coño toma un poquito de arroz en vena!'
+  return 'Arroz, rollito Arroyo e IRC no? VIVES EN EL PASADO TIOO, EVOLUCIONA'
 end
 
 return {
-    description = "Arroz",
+    description = "Version",
     usage = "!arroz",
     patterns = {"^!arroz$"},
     run = run
